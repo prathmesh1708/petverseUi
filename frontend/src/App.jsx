@@ -1,31 +1,31 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
-import AuthLayout from './UserApplication/Authentication/AuthLayout';
-import Login from './UserApplication/Authentication/Login';
-import Signup from './UserApplication/Authentication/Signup';
-import ForgotPassword from './UserApplication/Authentication/ForgotPassword';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import AuthLayout from './UserApplication/AuthenticationModule/AuthLayout';
+import Login from './UserApplication/AuthenticationModule/Login';
+import Signup from './UserApplication/AuthenticationModule/Signup';
+import ForgotPassword from './UserApplication/AuthenticationModule/ForgotPassword';
+import Dashboard from './UserApplication/Home/Dashboard';
 import './App.css';
+
 
 function App() {
   return (
-    <Routes>
-      <Route path="/auth" element={<AuthLayout />}>
-        <Route index element={<Navigate to="login" replace />} />
-        <Route path="login" element={<Login />} />
-        <Route path="signup" element={<Signup />} />
-        <Route path="forgot-password" element={<ForgotPassword />} />
-      </Route>
-      
-      {/* Home Route placeholder */}
-      <Route path="/" element={
-        <div style={{ padding: '2rem', textAlign: 'center' }}>
-          <h1>Welcome to PetVerse!</h1>
-          <p>You have successfully logged in.</p>
-          <a href="/auth/login" className="btn-primary" style={{ marginTop: '1rem' }}>Go back to login</a>
-        </div>
-      } />
-      
-      <Route path="*" element={<Navigate to="/auth/login" replace />} />
-    </Routes>
+    <BrowserRouter>
+      <div className="app-container">
+        <Routes>
+          <Route path="/" element={<Navigate to="/auth/login" replace />} />
+
+          <Route path="/auth" element={<AuthLayout />}>
+            <Route index element={<Navigate to="login" replace />} />
+            <Route path="login" element={<Login />} />
+            <Route path="signup" element={<Signup />} />
+            <Route path="forgot-password" element={<ForgotPassword />} />
+          </Route>
+
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
