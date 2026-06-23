@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PetVerse | Premium Pet Social Platform</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./styles/variables.css">
+  <link rel="stylesheet" href="./styles/global.css">
+  
+  <style>
+    /* Hero Specific Styles */
+    .hero-section {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      background-color: var(--color-bg-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-inverse);
+    }
+
+    #webgl-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      max-width: 800px;
+      padding: 0 2rem;
+      pointer-events: none; /* Let clicks pass through to webgl if needed, except for buttons */
+    }
+
+    .hero-title {
+      font-size: 4.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: #fff;
+    }
+
+    .hero-title .highlight {
+      background: var(--color-gradient-hero);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      pointer-events: auto; /* Re-enable pointer events for buttons */
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      color: white;
+    }
+
+    .nav-brand {
+      font-size: 1.5rem;
+      font-weight: 800;
+      font-family: var(--font-heading);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-brand i {
+      color: var(--color-primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 500;
+    }
+
+    .nav-auth {
+      display: flex;
+      gap: 1rem;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <i class="fa-solid fa-paw"></i> PetVerse
+    </div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#matches">Matches</a>
+      <a href="#community">Community</a>
+    </div>
+    <div class="nav-auth">
+      <a href="./modules/auth/login.html" class="btn-outline" style="padding: 0.5rem 1.5rem; border-width: 1px;">Log In</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <!-- Three.js Canvas container -->
+    <canvas id="webgl-canvas"></canvas>
+
+    <div class="hero-content">
+      <h1 class="hero-title">Where Pets Find Their <span class="highlight">People</span>.<br>And Each Other.</h1>
+      <p class="hero-subtitle">The next-generation platform for pet social matching, community bonding, and premium marketplace services.</p>
+      <div class="hero-cta">
+        <a href="./modules/auth/signup.html" class="btn-primary magnetic-btn">Get Started Free</a>
+        <a href="#matches" class="btn-outline magnetic-btn">Explore Matches</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CDNs -->
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+  
+  <!-- Custom Scripts -->
+  <script src="./animations/threejs/scene.js"></script>
+  <script src="./animations/threejs/petOrb.js"></script>
+  <script src="./animations/gsap/heroAnimations.js"></script>
+
+</body>
+</html>
