@@ -144,6 +144,21 @@
   flex: 1;
 }
 
+@media (max-width: 768px) {
+  .auth-glass-panel {
+    padding: 1.5rem;
+  }
+  
+  .row {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .auth-header h2 {
+    font-size: 1.5rem;
+  }
+}
+
 .wizard-actions {
   display: flex;
   justify-content: space-between;

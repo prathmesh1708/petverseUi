@@ -21,23 +21,23 @@ const FeaturedPromotions = () => {
         ref={bannerRef}
         style={{
           width: '100%',
-          height: '300px',
+          minHeight: '300px',
           borderRadius: '24px',
           overflow: 'hidden',
           position: 'relative',
           display: 'flex',
           alignItems: 'center',
-          padding: '3rem',
+          padding: window.innerWidth < 768 ? '2rem 1.5rem' : '3rem',
           boxShadow: '0 12px 30px rgba(18, 130, 139, 0.15)',
           background: 'linear-gradient(135deg, #12828b 0%, #0f686f 100%)',
           color: 'white'
         }}
       >
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '500px' }}>
-          <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem', lineHeight: 1.1 }}>
+        <div style={{ position: 'relative', zIndex: 2, maxWidth: window.innerWidth < 768 ? '100%' : '500px' }}>
+          <h1 style={{ fontSize: window.innerWidth < 768 ? '1.8rem' : '2.5rem', marginBottom: '1rem', lineHeight: 1.1 }}>
             Spoil Your Furry Friends Today!
           </h1>
-          <p style={{ fontSize: '1.1rem', marginBottom: '2rem', opacity: 0.9 }}>
+          <p style={{ fontSize: window.innerWidth < 768 ? '0.95rem' : '1.1rem', marginBottom: '2rem', opacity: 0.9 }}>
             Get 30% off on all premium dog and cat food subscriptions. Exclusive to PetVerse members.
           </p>
           <button style={{

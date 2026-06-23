@@ -72,3 +72,30 @@
   opacity: 0;
   transform: translateY(30px);
 }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .home-header {
+    padding: 1rem;
+  }
+
+  .welcome-text {
+    display: none;
+  }
+
+  .home-content {
+    gap: 2rem;
+  }
+
+  .section-container {
+    padding: 0 1rem;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+  }
+
+  .view-all-link {
+    font-size: 0.85rem;
+  }
+}

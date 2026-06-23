@@ -39,9 +39,11 @@ const UpcomingEvents = () => {
         {events.map((event, index) => (
           <div key={event.id} className="event-row" style={{ 
             display: 'flex', 
+            flexDirection: window.innerWidth < 768 ? 'column' : 'row',
+            gap: window.innerWidth < 768 ? '1rem' : '0',
             justifyContent: 'space-between', 
-            alignItems: 'center',
-            padding: '1.5rem 2rem',
+            alignItems: window.innerWidth < 768 ? 'flex-start' : 'center',
+            padding: window.innerWidth < 768 ? '1rem' : '1.5rem 2rem',
             borderBottom: index !== events.length - 1 ? '1px solid var(--color-border)' : 'none',
             background: 'rgba(255,255,255,0.4)',
             transition: 'background 0.3s ease'
@@ -49,18 +51,27 @@ const UpcomingEvents = () => {
           onMouseEnter={(e) => e.currentTarget.style.background = 'var(--color-bg)'}
           onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.4)'}
           >
-            <div style={{ flex: 2 }}>
-              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.25rem', color: 'var(--color-text-primary)' }}>{event.title}</h3>
-              <p style={{ color: 'var(--color-text-secondary)', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <Calendar size={14} /> {event.date} • by {event.vendor}
-              </p>
+            <div style={{ flex: 2, width: '100%' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', width: '100%' }}>
+                <div>
+                  <h3 style={{ fontSize: '1.1rem', marginBottom: '0.25rem', color: 'var(--color-text-primary)' }}>{event.title}</h3>
+                  <p style={{ color: 'var(--color-text-secondary)', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <Calendar size={14} /> {event.date} • by {event.vendor}
+                  </p>
+                </div>
+                {window.innerWidth < 768 && (
+                  <span style={{ fontWeight: 600, color: 'var(--color-primary-dark)' }}>{event.price}</span>
+                )}
+              </div>
             </div>
             
-            <div style={{ flex: 1, textAlign: 'center' }}>
-              <span style={{ fontWeight: 600, color: 'var(--color-primary-dark)' }}>{event.price}</span>
-            </div>
+            {window.innerWidth >= 768 && (
+              <div style={{ flex: 1, textAlign: 'center' }}>
+                <span style={{ fontWeight: 600, color: 'var(--color-primary-dark)' }}>{event.price}</span>
+              </div>
+            )}
             
-            <div style={{ flex: 1, textAlign: 'right', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.5rem' }}>
+            <div style={{ flex: 1, textAlign: window.innerWidth < 768 ? 'left' : 'right', display: 'flex', flexDirection: window.innerWidth < 768 ? 'row' : 'column', alignItems: window.innerWidth < 768 ? 'center' : 'flex-end', justifyContent: window.innerWidth < 768 ? 'space-between' : 'flex-end', width: '100%', gap: '0.5rem', marginTop: window.innerWidth < 768 ? '0.5rem' : '0' }}>
               <span style={{ fontSize: '0.85rem', color: 'var(--color-text-secondary)', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
                 <Users size={14} /> {event.slots}
               </span>
