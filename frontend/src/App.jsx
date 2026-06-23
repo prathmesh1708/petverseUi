@@ -5,6 +5,7 @@ import Signup from './UserApplication/AuthenticationModule/Signup';
 import ForgotPassword from './UserApplication/AuthenticationModule/ForgotPassword';
 import Dashboard from './UserApplication/Home/Dashboard';
 import './App.css';
+import Testing from './components/Testing';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/auth/login" replace />} />
 
+
           <Route path="/auth" element={<AuthLayout />}>
             <Route index element={<Navigate to="login" replace />} />
             <Route path="login" element={<Login />} />
@@ -22,6 +24,7 @@ function App() {
           </Route>
 
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/testing" element={<Testing/>}/>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
