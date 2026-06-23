@@ -1,18 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { Routes, Route, Navigate } from 'react-router-dom';
+import AuthLayout from './UserApplication/Authentication/AuthLayout';
+import Login from './UserApplication/Authentication/Login';
+import Signup from './UserApplication/Authentication/Signup';
+import ForgotPassword from './UserApplication/Authentication/ForgotPassword';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <h1>hello</h1>
-      <p>Lorem ipsum dolor, sit amfyut hih yet consectetur adipisicing elit. Vero at reiciendis amet quis in dolorum obcaecati pariatur quibusdam? Doloremque aspernatur atque vero, reprehenderit aut fugiat nemo tempore fuga quae quas.</p>
-    </>
-  )
+    <Routes>
+      <Route path="/auth" element={<AuthLayout />}>
+        <Route index element={<Navigate to="login" replace />} />
+        <Route path="login" element={<Login />} />
+        <Route path="signup" element={<Signup />} />
+        <Route path="forgot-password" element={<ForgotPassword />} />
+      </Route>
+      
+      {/* Home Route placeholder */}
+      <Route path="/" element={
+        <div style={{ padding: '2rem', textAlign: 'center' }}>
+          <h1>Welcome to PetVerse!</h1>
+          <p>You have successfully logged in.</p>
+          <a href="/auth/login" className="btn-primary" style={{ marginTop: '1rem' }}>Go back to login</a>
+        </div>
+      } />
+      
+      <Route path="*" element={<Navigate to="/auth/login" replace />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
