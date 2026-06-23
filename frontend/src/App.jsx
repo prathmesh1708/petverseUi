@@ -10,6 +10,7 @@ function App() {
   return (
     <>
       <h1>hello</h1>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero at reiciendis amet quis in dolorum obcaecati pariatur quibusdam? Doloremque aspernatur atque vero, reprehenderit aut fugiat nemo tempore fuga quae quas.</p>
     </>
   )
 }
