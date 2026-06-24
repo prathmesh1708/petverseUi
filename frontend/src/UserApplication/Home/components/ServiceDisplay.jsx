@@ -1,19 +1,24 @@
 import React, { useRef, useEffect } from 'react';
-import { Stethoscope, Store, Utensils, CalendarDays, Heart, PawPrint, Scissors } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Stethoscope, Store, Utensils, CalendarDays, Heart, PawPrint, Scissors, User, Wallet, Bell } from 'lucide-react';
 import gsap from 'gsap';
 
 const services = [
-  { id: 1, name: 'Doctors', icon: <Stethoscope size={32} /> },
-  { id: 2, name: 'Shops', icon: <Store size={32} /> },
-  { id: 3, name: 'Meals', icon: <Utensils size={32} /> },
-  { id: 4, name: 'Events', icon: <CalendarDays size={32} /> },
-  { id: 5, name: 'Memorial', icon: <Heart size={32} /> },
-  { id: 6, name: 'Adoption', icon: <PawPrint size={32} /> },
-  { id: 7, name: 'Grooming', icon: <Scissors size={32} /> },
+  { id: 1, name: 'Doctors', icon: <Stethoscope size={32} />, route: null },
+  { id: 2, name: 'Shops', icon: <Store size={32} />, route: null },
+  { id: 3, name: 'Meals', icon: <Utensils size={32} />, route: null },
+  { id: 4, name: 'Events', icon: <CalendarDays size={32} />, route: null },
+  { id: 5, name: 'Memorial', icon: <Heart size={32} />, route: '/memorial' },
+  { id: 6, name: 'Adoption', icon: <PawPrint size={32} />, route: null },
+  { id: 7, name: 'Grooming', icon: <Scissors size={32} />, route: null },
+  { id: 8, name: 'Profile', icon: <User size={32} />, route: '/profile' },
+  { id: 9, name: 'Wallet', icon: <Wallet size={32} />, route: '/profile?tab=wallet' },
+  { id: 10, name: 'Notification', icon: <Bell size={32} />, route: null },
 ];
 
 const ServiceDisplay = () => {
   const containerRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -46,6 +51,7 @@ const ServiceDisplay = () => {
           <div 
             key={service.id} 
             className="service-circle"
+            onClick={() => service.route && navigate(service.route)}
             style={{
               display: 'flex',
               flexDirection: 'column',

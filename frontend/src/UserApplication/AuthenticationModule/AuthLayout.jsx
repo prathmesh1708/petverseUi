@@ -87,7 +87,9 @@ const AuthLayout = () => {
           <directionalLight position={[10, 10, 5]} intensity={1} color="#d4eaed" />
           <pointLight position={[-10, -10, -5]} intensity={0.5} color="#fff4f4" />
           <Environment preset="city" />
-          <FloatingDogPlanes />
+          <React.Suspense fallback={null}>
+            <FloatingDogPlanes />
+          </React.Suspense>
         </Canvas>
       </div>
 

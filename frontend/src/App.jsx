@@ -4,31 +4,33 @@ import Login from './UserApplication/AuthenticationModule/Login';
 import Signup from './UserApplication/AuthenticationModule/Signup';
 import ForgotPassword from './UserApplication/AuthenticationModule/ForgotPassword';
 import Dashboard from './UserApplication/Home/Dashboard';
+import MemorialServiceModule from './UserApplication/MemorialServiceModule/MemorialServiceModule';
+import ProfileModule from './UserApplication/profile/ProfileModule';
 import './App.css';
 import Testing from './components/Testing';
 
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="app-container">
-        <Routes>
-          <Route path="/" element={<Navigate to="/auth/login" replace />} />
+    <div className="app-container">
+      <Routes>
+        <Route path="/" element={<Navigate to="/auth/login" replace />} />
 
 
-          <Route path="/auth" element={<AuthLayout />}>
-            <Route index element={<Navigate to="login" replace />} />
-            <Route path="login" element={<Login />} />
-            <Route path="signup" element={<Signup />} />
-            <Route path="forgot-password" element={<ForgotPassword />} />
-          </Route>
+        <Route path="/auth" element={<AuthLayout />}>
+          <Route index element={<Navigate to="login" replace />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
+          <Route path="forgot-password" element={<ForgotPassword />} />
+        </Route>
 
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/testing" element={<Testing/>}/>
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/memorial" element={<MemorialServiceModule />} />
+        <Route path="/profile" element={<ProfileModule />} />
+        {/* <Route path="/testing" element={<Testing/>}/> */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </div>
   );
 }
 

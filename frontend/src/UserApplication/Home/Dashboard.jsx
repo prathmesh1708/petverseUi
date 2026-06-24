@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { PawPrint } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { PawPrint, User } from 'lucide-react';
 import NotificationWidget from './components/NotificationWidget';
 import FeaturedPromotions from './components/FeaturedPromotions';
 import ServiceDisplay from './components/ServiceDisplay';
@@ -33,14 +34,42 @@ const Dashboard = () => {
       <header className="home-header">
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           <PawPrint size={28} color="var(--color-primary)" />
-          <a href="/dashboard" className="brand-logo">PetVerse</a>
+          <Link to="/dashboard" className="brand-logo">PetVerse</Link>
         </div>
         
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
           <div style={{ fontSize: '0.9rem', fontWeight: 500, color: 'var(--color-text-secondary)' }}>
-            Welcome back, <span style={{ color: 'var(--color-primary-dark)', fontWeight: 700 }}>John & Buddy</span>!
+            Welcome back, <Link to="/profile" style={{ color: 'var(--color-primary-dark)', fontWeight: 700, textDecoration: 'none' }}>John & Buddy</Link>!
           </div>
           <NotificationWidget />
+          <Link 
+            to="/profile" 
+            title="Profile Settings"
+            style={{
+              background: 'var(--color-primary-light)',
+              border: 'none',
+              borderRadius: '50%',
+              width: '40px',
+              height: '40px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: 'var(--color-primary-dark)',
+              transition: 'transform 0.2s ease, background-color 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'scale(1.08)';
+              e.currentTarget.style.backgroundColor = 'var(--color-primary)';
+              e.currentTarget.style.color = '#fff';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'scale(1)';
+              e.currentTarget.style.backgroundColor = 'var(--color-primary-light)';
+              e.currentTarget.style.color = 'var(--color-primary-dark)';
+            }}
+          >
+            <User size={20} />
+          </Link>
         </div>
       </header>
 
